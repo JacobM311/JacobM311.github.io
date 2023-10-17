@@ -1,0 +1,21 @@
+/* Header styling */
+header {
+    text-align: center;
+  }
+  
+  /* Profile picture styling */
+  #profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+  
+  /* Project styling */
+  .project {
+    /* Add your styling for each project card */
+  }
+  
+  /* Footer styling */
+  footer {
+    /* Style your footer links and contact info */
+  }
