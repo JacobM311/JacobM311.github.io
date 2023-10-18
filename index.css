@@ -36,6 +36,24 @@
   width: 122px;
   object-fit: cover;
 }
+.fade-in {
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.home-image {
+  width: 122px;
+  object-fit: cover;
+  animation: fadeIn 1.5s ease-in-out;
+}
 .home-links-container {
   display: flex;
   align-items: flex-start;
@@ -160,6 +178,23 @@
   text-transform: capitalize;
   text-decoration: none;
 }
+
+.home-heading2 {
+  animation: slideIn 1s ease-out forwards;
+  /* You can adjust the animation duration and timing function as needed */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .home-hero-text-container {
   width: 45%;
   display: flex;
@@ -646,24 +681,4 @@
   .home-about-11 {
     width: 100%;
   }
-}
-
-.fade-in {
-  animation: fadeIn 1.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.home-image {
-  width: 122px;
-  object-fit: cover;
-  /* Add the fade-in class to apply the animation */
-  animation: fadeIn 1.5s ease-in-out;
 }
