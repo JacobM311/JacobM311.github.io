@@ -17,8 +17,7 @@
     We start this one with a simple button. -->
 <button onclick="activateXR()">Start Hello WebXR</button>
 <script>
-    async function activateXR()
-    {
+    async function activateXR() {
         // Add a canvas element and initialize a WebGL context that is compatible with WebXR.
         const canvas = document.createElement("canvas");
         document.body.appendChild(canvas);
@@ -76,8 +75,7 @@
         });
 
         session.addEventListener("select", (event) => {
-        if (flower)
-        {
+        if (flower) {
             const clone = flower.clone();
             clone.position.copy(reticle.position);
             scene.add(clone);
@@ -95,8 +93,7 @@
         // Retrieve the pose of the device.
         // XRFrame.getViewerPose can return null while the session attempts to establish tracking.
         const pose = frame.getViewerPose(referenceSpace);
-        if (pose)
-        {
+        if (pose) {
             // In mobile AR, we only have one view.
             const view = pose.views[0];
 
@@ -121,8 +118,7 @@
         }
         }
         session.requestAnimationFrame(onXRFrame);
-
-    }
+}
 </script>
 </body>
 </html>
