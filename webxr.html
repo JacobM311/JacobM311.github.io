@@ -1,3 +1,29 @@
+
+
+Check out Google's Immersive Geospatial Challenge today. Register here.
+Home
+Products
+ARCore
+Documentation
+Was this helpful?
+
+Send feedbackCreate an immersive AR session using WebXR
+
+bookmark_border
+
+
+This page will guide you through creating a simple immersive AR application using WebXR.
+
+
+
+You'll need a WebXR-compatible development environment to get started.
+
+Create an HTML page
+WebXR requires user interaction to be able to start a session. Create a button that calls activateXR(). Upon loading the page, the user can use this button to start the AR experience.
+
+Make a new file called index.html and add the following HTML code to it:
+
+
 <!doctype html>
 <html>
 <head>
@@ -6,10 +32,10 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>Hello WebXR!</title>
 
-    <!-- three.js -->
-    <script src="https://unpkg.com/three@0.126.0/build/three.js"></script>
+  <!-- three.js -->
+  <script src="https://unpkg.com/three@0.126.0/build/three.js"></script>
 
-    <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
 </head>
 <body>
 
@@ -17,14 +43,14 @@
     We start this one with a simple button. -->
 <button onclick="activateXR()">Start Hello WebXR</button>
 <script>
-    async function activateXR() {
-
-        camera.projectionMatrix.fromArray(view.projectionMatrix);
-
+    async function activateXR()
+    {
         // Add a canvas element and initialize a WebGL context that is compatible with WebXR.
         const canvas = document.createElement("canvas");
         document.body.appendChild(canvas);
         const gl = canvas.getContext("webgl", {xrCompatible: true});
+
+        const scene = new THREE.Scene();
 
         const scene = new THREE.Scene();
 
@@ -62,29 +88,6 @@
         // Perform hit testing using the viewer as origin.
         const hitTestSource = await session.requestHitTestSource({ space: viewerSpace });
 
-        camera.updateMatrixWorld(true);
-
-        const hitTestResults = frame.getHitTestResults(hitTestSource);
-        if (hitTestResults.length > 0 && reticle) {
-        const hitPose = hitTestResults[0].getPose(referenceSpace);
-        reticle.visible = true;
-        reticle.position.set(hitPose.transform.position.x, hitPose.transform.position.y, hitPose.transform.position.z)
-        reticle.updateMatrixWorld(true);
-        }
-
-        let flower;
-        loader.load("https://immersive-web.github.io/webxr-samples/media/gltf/sunflower/sunflower.gltf", function(gltf) {
-        flower = gltf.scene;
-        });
-
-        session.addEventListener("select", (event) => {
-        if (flower) {
-            const clone = flower.clone();
-            clone.position.copy(reticle.position);
-            scene.add(clone);
-        }
-        });
-
         const loader = new THREE.GLTFLoader();
         let reticle;
         loader.load("https://immersive-web.github.io/webxr-samples/media/gltf/reticle/reticle.gltf", function(gltf) {
@@ -98,6 +101,15 @@
         flower = gltf.scene;
         });
 
+        session.addEventListener("select", (event) => {
+        if (flower)
+        {
+            const clone = flower.clone();
+            clone.position.copy(reticle.position);
+            scene.add(clone);
+        }
+        });
+
         // Create a render loop that allows us to draw on the AR view.
         const onXRFrame = (time, frame) => {
         // Queue up the next draw request.
@@ -109,7 +121,8 @@
         // Retrieve the pose of the device.
         // XRFrame.getViewerPose can return null while the session attempts to establish tracking.
         const pose = frame.getViewerPose(referenceSpace);
-        if (pose) {
+        if (pose)
+        {
             // In mobile AR, we only have one view.
             const view = pose.views[0];
 
@@ -121,11 +134,20 @@
             camera.projectionMatrix.fromArray(view.projectionMatrix);
             camera.updateMatrixWorld(true);
 
+            const hitTestResults = frame.getHitTestResults(hitTestSource);
+            if (hitTestResults.length > 0 && reticle) {
+            const hitPose = hitTestResults[0].getPose(referenceSpace);
+            reticle.visible = true;
+            reticle.position.set(hitPose.transform.position.x, hitPose.transform.position.y, hitPose.transform.position.z)
+            reticle.updateMatrixWorld(true);
+            }
+
             // Render the scene with THREE.WebGLRenderer.
             renderer.render(scene, camera)
-            }
+        }
         }
         session.requestAnimationFrame(onXRFrame);
+
     }
 </script>
 </body>
