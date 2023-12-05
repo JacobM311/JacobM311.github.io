@@ -17,7 +17,8 @@
     We start this one with a simple button. -->
 <button onclick="activateXR()">START</button>
 <script>
-    async function activateXR() {
+    async function activateXR()
+    {
         // Add a canvas element and initialize a WebGL context that is compatible with WebXR.
         const canvas = document.createElement("canvas");
         document.body.appendChild(canvas);
@@ -116,7 +117,11 @@
         }
         }
         session.requestAnimationFrame(onXRFrame);
-}
+    }
+
+    document.addEventListener('touchstart', function() {
+            activateXR();
+        }, {once: true});
 </script>
 </body>
 </html>
