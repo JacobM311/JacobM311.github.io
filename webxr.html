@@ -24,6 +24,13 @@
 
     var markerRoot1;
 
+    var currentFrame = 0;
+
+    var texture;
+
+    var framesX = 30;
+    var framesY = 30;
+
     initialize();
     animate();
 
@@ -93,10 +100,8 @@
         })
 
         // Sprite sheet setup
-        var texture = new THREE.TextureLoader().load('public/VR-room_sprite_sheet.png');
+        texture = new THREE.TextureLoader().load('public/VR-room_sprite_sheet.png');
         texture.wrapS = texture.wrapT = THREE.ClampToEdgeWrapping;
-        var framesX = 30;
-        var framesY = 30;
         texture.repeat.set(1 / framesX, 1 / framesY);
 
         var geometry = new THREE.PlaneGeometry(1, 1);
@@ -105,24 +110,26 @@
         sprite.position.y = 0.5;
         markerRoot1.add(sprite);
 
-        // Animation logic for sprite sheet
-        var currentFrame = 0;
-        function updateTextureFrame() {
-            var frameX = currentFrame % framesX;
-            var frameY = Math.floor(currentFrame / framesX);
+        animate();
+    }
 
-            texture.offset.x = frameX / framesX;
-            texture.offset.y = frameY / framesY;
+    function updateTextureFrame()
+    {
+        var frameX = currentFrame % framesX;
+        var frameY = Math.floor(currentFrame / framesX);
 
-            currentFrame = (currentFrame + 1) % (framesX * framesY);
-        }
+        texture.offset.x = frameX / framesX;
+        texture.offset.y = frameY / framesY;
 
-        function animate() {
-            requestAnimationFrame(animate);
-            updateTextureFrame(); // Update the texture for sprite sheet animation
-            update();
-            render();
-        }
+        currentFrame = (currentFrame + 1) % (framesX * framesY);
+    }
+
+    function animate()
+    {
+        requestAnimationFrame(animate);
+        updateTextureFrame(); // Update the texture for sprite sheet animation
+        update();
+        render();
     }
 
     function update()
