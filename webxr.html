@@ -107,7 +107,6 @@
         var material = new THREE.MeshBasicMaterial({ map: texture, transparent: true, side: THREE.DoubleSide });
         var sprite = new THREE.Mesh(geometry, material);
         sprite.position.y = .5;
-        sprite.position.z = 2;
         sprite.rotation.x = -Math.PI / 2;
         markerRoot1.add(sprite);
 
