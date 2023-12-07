@@ -4,20 +4,18 @@
     <meta charset="utf-8">
     <title>AR.js with GLTF Model</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
-    <a-scene embedded arjs='sourceType: webcam;'>
+    <a-scene embedded arjs>
         <!-- Define the AR marker with 'kanji' preset -->
-        <a-marker preset="kanji">
+        <a-marker-camera preset='kanji'></a-marker-camera>
             <!-- Add the GLTF model -->
-            <a-entity
-                gltf-model="public/headset.gltf"
-                scale="0.01 0.01 0.01"
-                position="0 0.5 0"
-                rotation="-90 0 0">
-            </a-entity>
+            <a-assets>
+                <a-asset-item id="headset" src="public/headset.gltf"></a-asset-item>
+              </a-assets>
+            <a-entity gltf-model="##headset"></a-entity>
         </a-marker>
         <!-- Add a camera -->
         <a-entity camera></a-entity>
