@@ -14,20 +14,12 @@
         <!-- Define the AR marker with 'kanji' preset -->
         <a-marker preset='kanji'>
             <!-- Add the GLTF model -->
-            <a-entity 
-            geometry='primitive: plane; width: 1; height: 0.2;'
-            material='color: #FFF;'
-            text='value: Click Me; align: center;'
-            position='0 1 0'
-            event-set__enter='_event: mouseenter; color: #7BC8A4'
-            event-set__leave='_event: mouseleave; color: #FFF'
-            class="clickable"
-            onclick="alert('Button was clicked!');">
-            </a-entity>
             <a-entity
                 position="0 0.2 0"
                 scale="5 5 5"
-                gltf-model="/public/headset.gltf">
+                gltf-model="/public/headset.gltf"
+                class="clickable"
+                onclick="launchGithub();">
             </a-entity>
             <a-entity
                 position="0 0.2 2"
@@ -38,5 +30,11 @@
         <!-- Add a camera -->
         <a-entity camera></a-entity>
     </a-scene>
+    <script>
+        function launchGithub()
+        {
+            alert('Model clicked!');
+        }
+    </script>
 </body>
 </html>
