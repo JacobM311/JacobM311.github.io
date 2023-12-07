@@ -13,30 +13,20 @@
     <script src="threex/threex-artoolkitcontext.js"></script>
     <script src="threex/threex-arbasecontrols.js"></script>
     <script src="threex/threex-armarkercontrols.js"></script>
+    <!-- include GTLFLoader.js -->
+    <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
 </head>
 
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
 
 <script>
+
     var scene, camera, renderer, clock, deltaTime, totalTime;
-
     var arToolkitSource, arToolkitContext;
-
     var markerRoot1;
-
-    var currentFrame = 0;
-
-    var framesX = 30;
-    var framesY = 30;
-
-    var textureLoader = new THREE.TextureLoader();
-    var texture;
-    textureLoader.load('public/VR-room_sprite_sheet.png', function (loadedTexture)
-    {
-        texture = loadedTexture;
+    var model;
     
-        initialize();
-    });
+    initialize();
 
     
     function initialize()
@@ -49,25 +39,16 @@
         camera = new THREE.Camera();
         scene.add(camera);
 
-        renderer = new THREE.WebGLRenderer({
-            antialias : true,
-            alpha: true
-        });
+        renderer = new THREE.WebGLRenderer({antialias : true, alpha: true});
         renderer.setClearColor(new THREE.Color('lightgrey'), 0)
         renderer.setSize( 640, 480 );
         renderer.domElement.style.position = 'absolute'
         renderer.domElement.style.top = '0px'
         renderer.domElement.style.left = '0px'
         document.body.appendChild( renderer.domElement );
-
-        clock = new THREE.Clock();
-        deltaTime = 0;
-        totalTime = 0;
         
         // setup arToolkitSource
-        arToolkitSource = new THREEx.ArToolkitSource({
-            sourceType : 'webcam',
-        });
+        arToolkitSource = new THREEx.ArToolkitSource({sourceType : 'webcam',});
 
         function onResize()
         {
@@ -104,37 +85,21 @@
             type: 'pattern', patternUrl: "data/kanji.patt",
         })
 
-        // Sprite sheet setup
-        texture.wrapS = texture.wrapT = THREE.ClampToEdgeWrapping;
-        texture.repeat.set(1 / framesX, 1 / framesY);
-
-        var geometry = new THREE.PlaneGeometry(1, 1);
-        var material = new THREE.MeshBasicMaterial({ map: texture, transparent: true, side: THREE.DoubleSide });
-        var sprite = new THREE.Mesh(geometry, material);
-        sprite.position.y = -2;
-        sprite.position.x = -2;
-
-        sprite.rotation.x = -Math.PI / 2;
-        markerRoot1.add(sprite);
+        // Load GTLF model
+        var loader = new THREE.GLTFLoader();
+        loader.load('public/headset.gltf', function(gltf) {
+            model = gltf.scene;
+            model.scale.set(0.01, 0.01, 0.01); // Adjust the scale of the model
+            model.position.y = 0.5; // Adjust the position as needed
+            markerRoot1.add(model);
+        });
 
         animate();
-    }
-
-    function updateTextureFrame()
-    {
-        var frameX = currentFrame % framesX;
-        var frameY = Math.floor(currentFrame / framesX);
-
-        texture.offset.x = frameX / framesX;
-        texture.offset.y = frameY / framesY;
-
-        currentFrame = (currentFrame + 1) % (framesX * framesY);
     }
 
     function animate()
     {
         requestAnimationFrame(animate);
-        updateTextureFrame(); // Update the texture for sprite sheet animation
         update();
         render();
     }
