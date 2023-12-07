@@ -87,7 +87,7 @@
 
         // Load GTLF model
         var loader = new THREE.GLTFLoader();
-        loader.load('public/headset.gltf', function(gltf) {
+        loader.load('https://immersive-web.github.io/webxr-samples/media/gltf/headset/headset.gltf', function(gltf) {
             model = gltf.scene;
             model.scale.set(0.01, 0.01, 0.01); // Adjust the scale of the model
             model.position.y = 0.5; // Adjust the position as needed
