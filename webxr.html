@@ -1,40 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>AR.js with GLTF Model</title>
-    <meta name="viewport" content="width=device-width, user-scalable=yes, minimum-scale=1.0, maximum-scale=1.0">
-    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+	<meta charset="utf-8">
+	<title>AR.js with GLTF Model</title>
+	<meta name="viewport" content="width=device-width, user-scalable=yes, minimum-scale=1.0, maximum-scale=1.0">
+	<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+	<script src="https://libs.zappar.com/zappar-aframe/2.0.0/zappar-aframe.js"></script>
+	<script>// Only show our content when the image becomes visible
+		AFRAME.registerComponent("visibility-changer", {
+			init: function () {
+				this.el.setAttribute("visible", false)
+				this.el.sceneEl.addEventListener('zappar-visible', () => this.el.setAttribute("visible", true));
+			}
+		});</script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
-    <a-scene
-        vr-mode-ui="enabled: false"
-        embedded arjs>
-        <!-- Define the AR marker with 'kanji' preset -->
-        <a-marker preset='kanji'>
-            <!-- Add the GLTF model -->
-            <a-entity
-                position="0 0.2 0"
-                scale="5 5 5"
-                gltf-model="/public/headset.gltf"
-                class="clickable"
-                onclick="launchGithub();">
-            </a-entity>
-            <a-entity
-                position="0 0.2 2"
-                scale="1 1 1"
-                gltf-model="/public/button.gltf">
-            </a-entity>
-        </a-marker>
-        <!-- Add a camera -->
-        <a-entity camera></a-entity>
-    </a-scene>
-    <script>
-        function launchGithub()
-        {
-            alert('Model clicked!');
-        }
-    </script>
+	<!-- Start A-Frame scene-->
+	<a-scene loading-screen="backgroundColor: #344A60" vr-mode-ui="enabled: false" embedded arjs>
+		<!-- Ask user for camera permissions, display some text if permission is denied -->
+		<a-entity zappar-permissions-ui id="permissions"></a-entity>
+		<!-- shows a full-page dialog that informs the user they're using an unsupported browser -->
+		<a-entity zappar-compatibility-ui id="compatibility"></a-entity>
+
+		<!-- Add a camera -->
+		<a-camera zappar-camera cursor="rayOrigin: mouse; fuse: false;" raycaster="objects: .collidable"></a-camera>
+
+		<!-- Set up image tracking -->
+		<a-entity zappar-image="target: public/frame.png.zpt">
+			<a-entity visibility-changer>
+				<!-- Add the GLTF model -->
+				<a-entity position="0 0.2 0" scale="5 5 5" gltf-model="/public/headset-anim.gltf"></a-entity>
+			</a-entity>
+		</a-entity>
+</a-scene>
 </body>
 </html>
