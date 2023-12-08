@@ -17,10 +17,6 @@
 <body style='margin : 0px; overflow: hidden;'>
 	<!-- Start A-Frame scene-->
 	<a-scene loading-screen="backgroundColor: #344A60" vr-mode-ui="enabled: false" embedded arjs>
-		<!-- Ask user for camera permissions, display some text if permission is denied -->
-		<a-entity zappar-permissions-ui id="permissions"></a-entity>
-		<!-- shows a full-page dialog that informs the user they're using an unsupported browser -->
-		<a-entity zappar-compatibility-ui id="compatibility"></a-entity>
 
 		<!-- Add a camera -->
 		<a-camera zappar-camera cursor="rayOrigin: mouse; fuse: false;" raycaster="objects: .collidable"></a-camera>
