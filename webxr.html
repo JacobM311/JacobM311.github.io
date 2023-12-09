@@ -28,7 +28,8 @@
             alert('Model clicked');
         }
 
-        function debounce(func, wait) {
+        function debounce(func, wait)
+        {
             let timeout;
 
             return function executedFunction() {
@@ -50,7 +51,8 @@
         document.addEventListener('touchstart', enableRaycaster, { passive: true });
         document.addEventListener('mousemove', enableRaycaster, { passive: true });
 
-        function enableRaycaster() {
+        function enableRaycaster()
+        {
             const raycasterCursor = document.getElementById('raycasterCursor');
             raycasterCursor.setAttribute('raycaster', 'objects', '.clickable');
         }
