@@ -12,7 +12,7 @@
     <a-scene vr-mode-ui="enabled: false" embedded arjs>
         <!-- Add a camera -->
         <a-entity camera>
-            <a-entity cursor="rayOrigin: mouse"></a-entity>
+            <a-entity id="raycasterCursor" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .clickable"></a-entity>
         </a-entity>
 
         <!-- Define the AR marker with 'kanji' preset -->
@@ -46,6 +46,14 @@
         }
 
         const debouncedOnModelClick = debounce(onModelClick, 500);
+
+        document.addEventListener('touchstart', enableRaycaster, { passive: true });
+        document.addEventListener('mousemove', enableRaycaster, { passive: true });
+
+        function enableRaycaster() {
+            const raycasterCursor = document.getElementById('raycasterCursor');
+            raycasterCursor.setAttribute('raycaster', 'objects', '.clickable');
+        }
 
     </script>
 </body>
