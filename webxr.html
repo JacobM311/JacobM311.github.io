@@ -15,8 +15,8 @@
             <a-entity id="raycasterCursor" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .clickable"></a-entity>
         </a-entity>
 
-        <!-- Define the AR marker with 'kanji' preset -->
-        <a-marker preset='kanji'>
+        <!-- Define the AR marker with a custom preset -->
+        <a-marker preset='custom' url='/public/pattern-frame.patt'>
             <!-- Add the GLTF model -->
             <a-gltf-model src="/public/headset-anim.gltf" position="0 0.2 0" scale="5 5 5" animation-mixer="loop:repeat" class="clickable" onclick="onModelClick();"></a-gltf-model>
         </a-marker>
