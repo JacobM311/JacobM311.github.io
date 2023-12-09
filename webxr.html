@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=yes, minimum-scale=1.0, maximum-scale=1.0">
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.1.0/dist/aframe-extras.loaders.min.js"></script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
     <a-scene vr-mode-ui="enabled: false" embedded arjs>
@@ -17,12 +18,12 @@
         <!-- Define the AR marker with 'kanji' preset -->
         <a-marker preset='kanji'>
             <!-- Add the GLTF model -->
-            <a-entity position="0 0.2 0" scale="5 5 5" gltf-model="/public/headset-anim.gltf" class="clickable" onclick="onModelClick();"></a-entity>
+            <a-gltf-model src="/public/headset-anim.gltf" position="0 0.2 0" scale="5 5 5" animation-mixer="loop:once" class="clickable" onclick="onModelClick();"></a-gltf-model>
         </a-marker>
 
     </a-scene>
     <script>function onModelClick() {
-            alert('Model clicked!');
+            alert('Model clicked');
         }</script>
 </body>
 </html>
