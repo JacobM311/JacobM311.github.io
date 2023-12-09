@@ -22,8 +22,31 @@
         </a-marker>
 
     </a-scene>
-    <script>function onModelClick() {
+    <script>
+        function onModelClick()
+        {
             alert('Model clicked');
-        }</script>
+        }
+
+        function debounce(func, wait) {
+            let timeout;
+
+            return function executedFunction() {
+                const context = this;
+                const args = arguments;
+
+                const later = function () {
+                    timeout = null;
+                    func.apply(context, args);
+                };
+
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        const debouncedOnModelClick = debounce(onModelClick, 500);
+
+    </script>
 </body>
 </html>
