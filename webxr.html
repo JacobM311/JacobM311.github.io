@@ -11,15 +11,6 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <!-- include aframe loaders -->
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v7.0.0/dist/aframe-extras.loaders.min.js"></script>
-    <script>// Define a custom A-Frame component
-        AFRAME.registerComponent('log-animations', {
-            init: function () {
-                this.el.addEventListener('model-loaded', e => {
-                    // Log animations to the console
-                    console.log(this.el.components['gltf-model'].model.animations);
-                });
-            }
-        });</script>
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
@@ -42,8 +33,6 @@
             <!-- Adding myself -->
             <a-entity gltf-model="#jacobModel" foo position="0 0.2 0" scale="2 2 2" animation-mixer="loop:repeat"></a-entity>
         </a-marker>
-        <a-entity light="" data-aframe-default-light="" aframe-injected=""></a-entity>
-        <a-entity light="" position="" data-aframe-default-light="" aframe-injected=""></a-entity>
     </a-scene>
 
     <script>
