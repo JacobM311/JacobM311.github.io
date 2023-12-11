@@ -15,14 +15,14 @@
 
 <body style='margin : 0px; overflow: hidden;'>
 
-    <a-scene vr-mode-ui="enabled: false" renderer="antialias: false; logarithmicDepthBuffer:true;" embedded arjs>
+    <a-scene vr-mode-ui="enabled: false" renderer="antialias: false; logarithmicDepthBuffer:true; colorManagement: true" embedded arjs>
 
         <!-- Add a camera -->
         <a-entity camera>
             <a-entity id="raycasterCursor" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .clickable"></a-entity>
         </a-entity>
 
-        <!-- Preload assets -->
+        <!-- reload assets -->
         <a-assets>
             <a-asset-item id="jacobModel" src="public/jacob-typing.gltf"></a-asset-item>
             <a-asset-item id="headsetModel" src="public/headset-anim.gltf"></a-asset-item>
