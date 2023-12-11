@@ -18,7 +18,7 @@
     <a-scene WebGLRenderer.useLegacyLights="true" vr-mode-ui="enabled: false" renderer="antialias: false; logarithmicDepthBuffer:true" embedded arjs>
         <!-- Add a camera -->
         <a-entity camera>
-            <a-entity id="raycasterCursor" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .clickable"></a-entity>
+            <a-entity id="raycasterCursor" cursor="rayOrigin: mouse; fuse: true" raycaster="objects: .clickable"></a-entity>
         </a-entity>
 
         <a-assets>
