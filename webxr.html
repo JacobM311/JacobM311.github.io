@@ -15,12 +15,14 @@
 
 <body style='margin : 0px; overflow: hidden;'>
 
-    <a-scene vr-mode-ui="enabled: false" renderer="antialias: false; logarithmicDepthBuffer:true; colorManagement: true" embedded arjs>
+    <a-scene vr-mode-ui="enabled: false" renderer="antialias: false; logarithmicDepthBuffer:true;" embedded arjs>
+
         <!-- Add a camera -->
         <a-entity camera>
             <a-entity id="raycasterCursor" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .clickable"></a-entity>
         </a-entity>
 
+        <!-- Preload assets -->
         <a-assets>
             <a-asset-item id="jacobModel" src="public/jacob-typing.gltf"></a-asset-item>
             <a-asset-item id="headsetModel" src="public/headset-anim.gltf"></a-asset-item>
@@ -33,6 +35,7 @@
             <!-- Adding myself -->
             <a-entity gltf-model="#jacobModel" position="0 0.2 0" scale="2 2 2" animation-mixer="loop:repeat"></a-entity>
         </a-marker>
+
         <a-entity light="" data-aframe-default-light="" aframe-injected=""></a-entity>
         <a-entity light="" position="" data-aframe-default-light="" aframe-injected=""></a-entity>
     </a-scene>
