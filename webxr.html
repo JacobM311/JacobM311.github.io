@@ -25,7 +25,7 @@
         </a-entity>
 
         <a-assets>
-            <a-asset-item id="jacobModel" src="public/jacob-typing.fbx"></a-asset-item>
+            <a-asset-item id="jacobModel" src="public/jacob-typing.gltf"></a-asset-item>
         </a-assets>
 
 
@@ -34,7 +34,7 @@
             <!-- Add the Headset model -->
             <a-gltf-model src="/public/headset-anim.gltf" position="0 0.2 0" scale="5 5 5" animation-mixer="loop:repeat" class="clickable" onclick="debouncedOnModelClick();"></a-gltf-model>
             <!-- Adding myself -->
-            <a-entity fbx-model="#jacobModel" position="0 0.2 0" scale=".1 .1 .1" animation-mixer="loop:repeat"></a-entity>
+            <a-entity gltf-model="#jacobModel" position="0 0.2 0" scale="2 2 2" animation-mixer="loop:repeat"></a-entity>
         </a-marker>
     </a-scene>
 
