@@ -16,6 +16,9 @@
 <body style='margin : 0px; overflow: hidden;'>
 
     <a-scene vr-mode-ui="enabled: false" renderer="antialias: false; logarithmicDepthBuffer:true" embedded arjs>
+        <a-entity light="type: ambient; color: #BBB"></a-entity>
+        <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
+
         <!-- Add a camera -->
         <a-entity camera>
             <a-entity id="raycasterCursor" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .clickable"></a-entity>
