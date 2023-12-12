@@ -17,7 +17,7 @@
 
     <a-scene vr-mode-ui="enabled: false" renderer="antialias: false; logarithmicDepthBuffer:true; colorManagement: true" embedded arjs>
 
-        <!-- Add a camera -->
+        <!-- Add a camera with collision detection -->
         <a-entity camera>
             <a-entity id="raycasterCursor" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .clickable"></a-entity>
         </a-entity>
@@ -40,9 +40,9 @@
             <a-entity gltf-model="#jacobModel" position="0 0.1 0" rotation="0 90 0" scale="1 1 1" animation-mixer="loop:repeat"></a-entity>
 
             <!-- Adding Social Media icons -->
-            <a-entity gltf-model="#WWWModel" position="2.2 0.3 -1.1" rotation="90 0 0" scale="1 1 1"></a-entity>
-            <a-entity gltf-model="#GithubModel" position="2.2 0.3 1.1" rotation="90 0 0" scale="1 1 1"></a-entity>
-            <a-entity gltf-model="#LinkedinModel" position="2.2 0.3 0" rotation="90 0 0" scale="1 1 1"></a-entity>
+            <a-entity gltf-model="#WWWModel" position="2.2 0.3 -1" rotation="90 0 0" scale=".8 .8 .8"></a-entity>
+            <a-entity gltf-model="#GithubModel" position="2.2 0.3 1" rotation="90 0 0" scale=".8 .8 .8"></a-entity>
+            <a-entity gltf-model="#LinkedinModel" position="2.2 0.3 0" rotation="90 0 0" scale=".8 .8 .8"></a-entity>
         </a-marker>
 
         <a-entity light="" data-aframe-default-light="" aframe-injected=""></a-entity>
