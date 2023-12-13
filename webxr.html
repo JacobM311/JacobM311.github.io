@@ -31,22 +31,23 @@
             <a-asset-item id="LinkedinModel" src="public/Linkedin.gltf"></a-asset-item>
         </a-assets>
 
+        <!-- Adding lighting to scene -->
+        <a-entity light="intensity: 1; castShadow: true" position="-0.5 1 1" data-aframe-default-light="" aframe-injected=""></a-entity>
+
         <!-- Define the AR marker with 'kanji' preset -->
         <a-marker preset='kanji'>
             <!-- Add the Headset model -->
-            <a-entity gltf-model="#headsetModel" position="0 0.1 0" scale="3 3 3" animation-mixer="loop:repeat" class="clickable" onclick="debouncedOnModelClick();"></a-entity>
+            <a-entity gltf-model="#headsetModel" position="3 0.08 1.24" scale="1 1 1" animation-mixer="loop:repeat" class="clickable" onclick="debouncedOnModelClick();"></a-entity>
 
             <!-- Adding myself -->
             <a-entity gltf-model="#jacobModel" position="0 0.1 0" rotation="0 90 0" scale="1 1 1" animation-mixer="loop:repeat"></a-entity>
 
             <!-- Adding Social Media icons -->
-            <a-entity gltf-model="#WWWModel" position="2 0.3 -.65" rotation="90 0 0" scale=".8 .8 .8"></a-entity>
-            <a-entity gltf-model="#GithubModel" position="2 0.3 .65" rotation="90 0 0" scale=".8 .8 .8"></a-entity>
-            <a-entity gltf-model="#LinkedinModel" position="2 0.3 0" rotation="90 0 0" scale=".8 .8 .8"></a-entity>
+            <a-entity gltf-model="#WWWModel" position="2 0.3 -.6" rotation="270 0 0" scale=".8 .8 .8"></a-entity>
+            <a-entity gltf-model="#GithubModel" position="2 0.3 .6" rotation="270 0 0" scale=".8 .8 .8"></a-entity>
+            <a-entity gltf-model="#LinkedinModel" position="2 0.3 0" rotation="270 0 0" scale=".8 .8 .8"></a-entity>
         </a-marker>
 
-        <a-entity light="" data-aframe-default-light="" aframe-injected=""></a-entity>
-        <a-entity light="" position="" data-aframe-default-light="" aframe-injected=""></a-entity>
     </a-scene>
 
     <script>
