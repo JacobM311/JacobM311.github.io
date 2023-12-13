@@ -43,7 +43,7 @@
             <a-entity gltf-model="#jacobModel" position="0 0.1 0" rotation="0 90 0" scale="1 1 1" animation-mixer="loop:repeat"></a-entity>
 
             <!-- Adding Social Media icons -->
-            <a-entity gltf-model="#WWWModel" position="2 0.3 -.6" rotation="270 0 0" scale=".8 .8 .8" class="clickable" onclick="debouncedOpenURL("https://jacobm311.github.io/")"></a-entity>
+            <a-entity gltf-model="#WWWModel" position="2 0.3 -.6" rotation="270 0 0" scale=".8 .8 .8" class="clickable" onclick="openURL('https://jacobm311.github.io/')"></a-entity>
             <a-entity gltf-model="#GithubModel" position="2 0.3 .6" rotation="270 0 0" scale=".8 .8 .8" class="clickable" onclick="debouncedOpenURL("https://github.com/JacobM311")"></a-entity>
             <a-entity gltf-model="#LinkedinModel" position="2 0.3 0" rotation="270 0 0" scale=".8 .8 .8" class="clickable" onclick="debouncedOpenURL("https://www.linkedin.com/in/jacob-robert-marshall-/")"></a-entity>
         </a-marker>
@@ -51,7 +51,7 @@
     </a-scene>
 
     <script>
-        function openURL(url)
+        function opeURL(url)
         {
             window.open(url, '_blank');
         }
@@ -80,7 +80,6 @@
         }
 
         const debouncedOnModelClick = debounce(onModelClick, 500);
-        const debouncedOpenURL = debounce(openURL, 500);
 
         document.addEventListener('touchstart', enableRaycaster, { passive: true });
         document.addEventListener('mousemove', enableRaycaster, { passive: true });
