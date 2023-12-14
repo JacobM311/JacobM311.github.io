@@ -44,17 +44,13 @@
 
             <!-- Adding Social Media icons -->
             <a-entity gltf-model="#WWWModel" position="2 0.3 -.6" rotation="270 0 0" scale=".8 .8 .8" class="clickable" onclick="window.open('https://jacobm311.github.io/index.html', '_blank');"></a-entity>
-            <a-entity gltf-model="#GithubModel" position="2 0.3 .6" rotation="270 0 0" scale=".8 .8 .8" class="clickable" onclick="openURL('https://github.com/JacobM311');"></a-entity>
-            <a-entity gltf-model="#LinkedinModel" position="2 0.3 0" rotation="270 0 0" scale=".8 .8 .8" class="clickable" onclick="openURL('https://www.linkedin.com/in/jacob-robert-marshall-/');"></a-entity>
+            <a-entity gltf-model="#GithubModel" position="2 0.3 .6" rotation="270 0 0" scale=".8 .8 .8" class="clickable" onclick="window.open('https://github.com/JacobM311', '_blank');"></a-entity>
+            <a-entity gltf-model="#LinkedinModel" position="2 0.3 0" rotation="270 0 0" scale=".8 .8 .8" class="clickable" onclick="window.open('https://www.linkedin.com/in/jacob-robert-marshall-/', '_blank');"></a-entity>
         </a-marker>
 
     </a-scene>
 
     <script>
-        function opeURL(url)
-        {
-            window.open(url, '_blank');
-        }
 
         function onModelClick()
         {
@@ -89,6 +85,7 @@
             const raycasterCursor = document.getElementById('raycasterCursor');
             raycasterCursor.setAttribute('raycaster', 'objects', '.clickable');
         }
+
     </script>
 
 </body>
